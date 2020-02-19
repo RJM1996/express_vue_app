@@ -30,6 +30,7 @@ export default {
   name: 'PostForm',
   data() {
     return {
+      name: '',
       age: '',
       file: ''
     }
