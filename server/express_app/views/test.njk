@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h1>{{this.msg}}</h1>
+    <h1>{% raw %}{{this.msg}}{% endraw %}</h1>
   </div>
 </template>
 
 <script>
 import axios from "axios"
 export default {
-  name: "NunjuckVue",
+  name: "{{title}}",
   data() {
     return {
       msg: '新增vue页面'

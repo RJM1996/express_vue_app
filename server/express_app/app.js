@@ -17,8 +17,13 @@ var createVueFile = require('./routes/create_vue_file.js')
 var app = express();
 
 // 设置模板引擎
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'html');
+app.set('views', path.resolve(__dirname, 'views'));
+nunjucks.configure('views', {
+  autoescape: true,  // 控制输出是否被转义
+  express: app, // 传入 express 实例初始化模板设置
+  watch: true // 启用模板文件监视,文件一旦发生改变,重新编译
+});
 
 app.use(logger('dev'));
 app.use(express.json());

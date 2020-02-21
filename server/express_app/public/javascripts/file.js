@@ -1,24 +1,45 @@
-var fs = require("fs");
-// var path = require("path");
+/**
+ * 1. 根据模板和数据,渲染生成代码文本
+ * 2. 创建文件,并写入渲染结果
+ */
 
-var filePath = "/Users/rongjunming/work/code/project/express_vue_app/client/vue_app/src/components/TestCreate.vue"
+// 引入需要的模块 
+var fs = require("fs");
+var nunjucks = require('nunjucks')
+var path = require('path')
+
+// 定义全局变量
+const BASE_URL = '/Users/rongjunming/work/code/project/express_vue_app'
+const VIEWS_PATH = path.join(BASE_URL, '/server/express_app/views')
+// 设置模板存放路径
+nunjucks.configure(VIEWS_PATH, {
+  autoescape: true
+})
+const TEMPLATE_FILE = 'test.njk'
+
 var file = {
-  data: "<template></template>",
-  // filePath: "/Users/rongjunming/work/code/project/express_vue_app/client/vue_app/src/components/TestCreate.vue",
-  createVue: function() {
-    console.log('开始创建...')
-    fs.writeFile(filePath, this.data, function (err) {
+  data: '',
+  fileName: '',
+  filePath: '',
+  renderData: {},
+  initData (req) {
+    console.log(req)
+    console.log('文件名: ', req.fileName)
+    this.fileName = req.fileName
+    this.filePath = path.join(BASE_URL, '/client/vue_app/src/components/' + this.fileName) 
+    this.renderData = req.renderData
+  },
+  writeFile () {
+    console.log('开始创建并写入文件...')
+    fs.writeFile(this.filePath, this.data, function (err) {
       if (err) {
         console.error(err)
       }
-      console.log('文件写入成功, 读取文件如下...')
-      fs.readFile(filePath, function (err, data) {
-        if (err) {
-          return console.error(err);
-        }
-        console.log(data.toString());
-      });
     })
+  },
+  renderFile () {
+    console.log('开始渲染...')
+    this.data = nunjucks.render(TEMPLATE_FILE, this.renderData)
   }
 }
 

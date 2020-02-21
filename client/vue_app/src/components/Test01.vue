@@ -7,7 +7,7 @@
 <script>
 import axios from "axios"
 export default {
-  name: "NunjuckVue",
+  name: "Test01",
   data() {
     return {
       msg: '新增vue页面'
