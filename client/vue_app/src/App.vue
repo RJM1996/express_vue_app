@@ -4,6 +4,9 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <get-form></get-form>
     <post-form></post-form>
+    <div>
+      <right-manage></right-manage>
+    </div>
   </div>
 </template>
 
@@ -11,13 +14,15 @@
 import HelloWorld from './components/HelloWorld.vue'
 import GetForm from './components/GetForm.vue'
 import PostForm from './components/PostForm.vue'
+import RightManage from './components/RightManage.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     GetForm,
-    PostForm
+    PostForm,
+    RightManage
   }
 }
 </script>
