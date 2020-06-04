@@ -5,7 +5,8 @@
     <get-form></get-form>
     <post-form></post-form>
     <div>
-      <right-manage></right-manage>
+      <p>自定义组件v-model</p>
+      <Father></Father>
     </div>
   </div>
 </template>
@@ -14,7 +15,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import GetForm from './components/GetForm.vue'
 import PostForm from './components/PostForm.vue'
-import RightManage from './components/RightManage.vue'
+import Father from './components/Father'
 
 export default {
   name: 'App',
@@ -22,7 +23,7 @@ export default {
     HelloWorld,
     GetForm,
     PostForm,
-    RightManage
+    Father
   }
 }
 </script>
