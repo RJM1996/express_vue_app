@@ -39,11 +39,13 @@ export default {
       },
       {
         type: 'input',
-        key: 'age'
+        key: 'age',
+        age: '23'
       },
       {
         type: 'select',
         key: 'sex',
+        sex: 'man',
         opts: [
           {
             label: '男',
