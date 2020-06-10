@@ -2,7 +2,7 @@
   <div id="app">
     <p>{{fatherValue}}</p>
     <!-- <div>父组件输入框：<input type="text" v-model="fatherValue"></div> -->
-    <child-component v-model="fatherValue" :items="items"></child-component>
+    <child-component v-model="fatherValue" :items="items" :testProp="testProp"  :title="title" @on-change="changeHandle"></child-component>
   </div>
 </template>
 
@@ -17,7 +17,13 @@ export default {
   data() {
     return {
       fatherValue: {},
-      items: []
+      items: [],
+      testProp: {
+        a: 1,
+        b: 2,
+        c: 3
+      },
+      title: 'aaa'
     }
   },
   watch: {
@@ -28,6 +34,12 @@ export default {
           this.$set(this.fatherValue, element.key, element[element.key] || '')
         });
       }
+    }
+  },
+  methods: {
+    changeHandle() {
+      // console.log(JSON.stringify(this.fatherValue))
+      console.log(this.title)
     }
   },
   
@@ -62,6 +74,7 @@ export default {
         ]
       }
     ]
+    console.log(JSON.stringify(this.testProp))
   }
 }
 </script>
